@@ -1,6 +1,5 @@
 import { FaWind,
     FaEye,
-    FaThermometerHalf,
     FaTint,
     FaCompressArrowsAlt
 } from "react-icons/fa";

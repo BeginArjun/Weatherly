@@ -30,7 +30,7 @@ const App=()=>{
       {(data.main) && <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start">
           <Card weatherData={data}/>
-          <InfoCard feelsLike={data.main.feels_like}
+          <InfoCard feelsLike={Math.round(data.main.feels_like)}
           max={data.main.temp_max}
           min={data.main.temp_min}
           humidity={data.main.humidity}

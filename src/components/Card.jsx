@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { FaRedo,FaSun } from "react-icons/fa";
+import { FaRedo} from "react-icons/fa";
 const Card=(props)=>{
     const [date,setDate]=useState(Date().toLocaleString().split(' ').slice(4,6))
     const [isRefreshed,setIsRefreshed]=useState(false)
@@ -24,7 +24,7 @@ const Card=(props)=>{
             </div>
             <div className="text-left  text-white text-xl w-full h-max flex flex-row justify-between items-start">
                 <div className="flex flex-col w-1/2 p-2 text-sm">
-                <p className="text-3xl font-extrabold font-sans">{props.weatherData.main.temp} &#8451;</p>
+                <p className="text-3xl font-extrabold font-sans">{Math.round(props.weatherData.main.temp)} &#8451;</p>
                 <p>{props.weatherData.weather[0].main}</p>
                 <p>Max {props.weatherData.main.temp_max}&#8451; Min {props.weatherData.main.temp_min}&#8451;</p>
                 </div>
