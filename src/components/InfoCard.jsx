@@ -19,8 +19,8 @@ const InfoCard=(props)=>{
                 </div>
                 <div className="flex flex-col text-xl justify-center items-end gap-3 w-1/2">
                     <p className="flex flex-row justify-start items-center gap-3">{props.humidity}%</p>
-                    <p className="flex flex-row justify-start items-center gap-3">{props.visibility}</p>
-                    <p className="flex flex-row justify-start items-center gap-3">{props.wind} km/h</p>
+                    <p className="flex flex-row justify-start items-center gap-3">{props.visibility}m</p>
+                    <p className="flex flex-row justify-start items-center gap-3">{props.wind} m/s</p>
                     <p className="flex flex-row justify-start items-center gap-3">{props.pressure} hPa</p>
                 </div>
             </div>
