@@ -47,7 +47,7 @@ const Forecast=(props)=>{
         <div className="bg-white shadow-lg rounded-md w-[350px] lg:w-[95vw] md:w-[70vw] h-[20rem] m-2 p-2 font-roboto">
             <p className="text-2xl text-black text-center lg:text-left">24 Hour Forecast of {props.city}</p>
             <div className="flex flex-row w-full justify-start items-center overflow-x-scroll mt-2">
-            {(element) && <div className="flex flex-row">
+            {(element) && <div className="flex flex-row gap-3">
             <ForecastCard 
             time={(Date().toLocaleString().split(' ')[4].slice(0,2))+":00"}
             weather={<img src= {currimg} alt={props.currData.weather[0].main}/>}
