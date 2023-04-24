@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
-      'pacifico':['Pacifico'],
-      'roboto':['Roboto Mono']
+      'Monsterrat':['Montserrat', 'sans-serif']
       }
     },
   },
