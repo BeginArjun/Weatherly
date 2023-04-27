@@ -3,17 +3,14 @@ import { useEffect,useState } from "react"
 import { useApi } from "../Context/Api"
 const Forecast=()=>{
     const {data,setData}=useApi()
-    const currimg=`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     const [dataApi,setDataApi]=useState([])
     const [isUpdated,setIsUpdated]=useState(false)
-    const lat=data.coord.lat
-    const lon=data.coord.lon
     const [foreData,setForeData]=useState([])
     const [element,setElement]=useState([])
     const apiKey='7d43ba9734370469b5589b2c43cc64c4'
     useEffect(()=>{
         console.log("Use Effect in forecast")
-        const fetchData=async ()=>{
+        const fetchData=async (lat,lon)=>{
             let result=await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&cnt=8&appid=${apiKey}`,{headers: {Accept: 'application/json'}})
             let apiData=await result.json()
             console.log("api Data")
@@ -25,26 +22,34 @@ const Forecast=()=>{
             console.log(data)
             console.log("foreData")
             console.log(foreData)
-            setElement(()=>{
+    }
+    navigator.geolocation.getCurrentPosition(function (position) {
+        fetchData(position.coords.latitude, position.coords.longitude);
+      });
+    setElement(()=>{
+        return(
+            foreData.map((d)=>{
                 return(
-                    foreData.map((d)=>{
-                        return(
-                            <ForecastCard
-                            temp={d.main.temp}
-                            time={d.dt_txt.slice(11,16)}
-                            weather={<img src={`https://openweathermap.org/img/wn/${d.weather[0].icon}@2x.png`} alt="weather-icon"/>} 
-                            precipitation={`${d.main.humidity}%`}
-                            key={Math.random()*8} 
-                            />
-                        )
-                    })
+                    <ForecastCard
+                    temp={d.main.temp}
+                    time={d.dt_txt.slice(11,16)}
+                    weather={<img src={`https://openweathermap.org/img/wn/${d.weather[0].icon}@2x.png`} alt="weather-icon"/>} 
+                    precipitation={`${d.main.humidity}%`}
+                    key={Math.random()*8} 
+                    />
                 )
             })
-    }
-    fetchData()
+        )
+    })
     console.log(element)
     console.log("Updated Data")
     },[isUpdated])
+    if(!data){
+        return(
+            <p>Loading...</p>
+        )
+    }
+    const currimg=`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     return(
         <div className="bg-white shadow-lg rounded-md w-[350px] lg:w-[95vw] md:w-[70vw] h-[20rem] m-2 p-2 font-roboto">
             <p className="text-2xl text-black text-center lg:text-left">24 Hour Forecast of {data.name}</p>
