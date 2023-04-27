@@ -14,6 +14,11 @@ const Card=()=>{
         setIsRefreshed(!isRefreshed)
     }
     const {data}=useApi()
+    if(!data){
+        return (
+            <p>Loading...</p>
+        )
+    }
     const src=`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     return (
         <div className="flex flex-col justify-start items-center bg-gradient-to-r from-[#0000f9] to-[#0fadcd] w-[350px] h-44 mt-4 mx-3 rounded-lg shadow-xl font-roboto md:w-[500px]">

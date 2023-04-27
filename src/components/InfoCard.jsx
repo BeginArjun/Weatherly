@@ -6,6 +6,11 @@ import { FaWind,
 import { useApi } from "../Context/Api";
 const InfoCard=()=>{
     const {data}=useApi()
+    if(!data){
+        return (
+            <p>Loading...</p>
+        )
+    }
     return(
         <div className="flex flex-col justify-start items-center bg-white w-[350px] h-[300px] rounded-md shadow-md m-3 text-[#2b2b2b] p-3">
             <p className="text-xl">Weather Today in {data.name}</p>
