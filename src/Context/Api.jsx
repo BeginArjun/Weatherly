@@ -1,35 +1,39 @@
-import { useContext,createContext,useState,useEffect } from "react";
-const ApiContext=createContext();
-export const Api=(props)=>{
-    const apiKey='7d43ba9734370469b5589b2c43cc64c4'
+import { useContext, createContext, useState, useEffect } from "react";
+const ApiContext = createContext();
+export const Api = (props) => {
+  const apiKey = "7d43ba9734370469b5589b2c43cc64c4";
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
-  const [data, setData] = useState([]);
-  const [dataUpdated,setDataUpdates]=useState(false)
+  const [data, setData] = useState(undefined);
+  const [units, setUnits] = useState("metric");
+  const [triggerUpdate, setTriggerUpdates] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-      });
-      let result=await fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${apiKey}`)
-      let apiData=await result.json()
-      setData(apiData)   
-      setDataUpdates(true)
-      console.log(apiData)
-     }
-    fetchData();
-   },[lat,long,dataUpdated])
+    const fetchData = async (lat, long) => {
+      let result = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=${units}&APPID=${apiKey}`
+      );
+      let apiData = await result.json();
+      setData(apiData);
+      setTriggerUpdates(data===undefined)
+      console.log(apiData);
+    };
 
-   return(
-         <ApiContext.Provider value={{data,setData}}>
-                {props.children}
-            </ApiContext.Provider>
-   )
-}
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+      fetchData(position.coords.latitude, position.coords.longitude);
+    });
+  }, [triggerUpdate]);
 
-export const useApi=()=>{
-    const context=useContext(ApiContext)
-    return context
-}
+  return (
+    <ApiContext.Provider value={{data}}>
+      {props.children}
+    </ApiContext.Provider>
+  );
+};
+
+export const useApi = () => {
+  const context = useContext(ApiContext);
+  return context;
+};
