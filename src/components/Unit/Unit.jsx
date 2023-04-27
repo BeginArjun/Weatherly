@@ -7,19 +7,19 @@ const Unit=()=>{
     const {data}=useApi()
     const [show,setShow]=useState(false);
     const [unit,setUnit]=useState('℃');
-    const [countryCode,setCountryCode]=useState();
-
-    useEffect(()=>{
-        if(data.sys)
-        setCountryCode(data.sys.country);
-    },[data])
-
+    const [countryCode,setCountryCode]=useState("_ _");
+    
     const handleSubmit=(e)=>{
         e.preventDefault();
         setUnit(e.target.innerText);
     }
     const showDropdown=()=>{
         setShow(!show);
+    }
+    if(!data || !data.sys){
+        return (
+            <p>Loading...</p>
+        )
     }
     return(
         <div className='flex flex-row justify-start items-center gap-2'>
