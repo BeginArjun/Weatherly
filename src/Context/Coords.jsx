@@ -3,8 +3,8 @@ export const CoordsContext=createContext()
 
 export const useLocation=()=>{
     const [location,setLocation]=useState({
-        lat:null,
-        long:null
+        lat:0,
+        long:0
     })
     useEffect(()=>{
             try{
@@ -20,8 +20,11 @@ export const useLocation=()=>{
             }
     },[])
     
-    const updateLocation=(lat,long)=>{
-        setLocation({lat,long})
+    const updateLocation=(lt,lon)=>{
+        setLocation({
+            lat:lt,
+            long:lon}
+            )
     }
 
     return [location,updateLocation]

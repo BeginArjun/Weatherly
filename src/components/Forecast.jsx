@@ -13,15 +13,9 @@ const Forecast=()=>{
         const fetchData=async (lat,lon)=>{
             let result=await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&cnt=8&appid=${apiKey}`,{headers: {Accept: 'application/json'}})
             let apiData=await result.json()
-            console.log("api Data")
-            console.log(apiData)
             setDataApi(apiData)
             setForeData(apiData.list)
             setIsUpdated(true)
-            console.log("Data")
-            console.log(data)
-            console.log("foreData")
-            console.log(foreData)
     }
     navigator.geolocation.getCurrentPosition(function (position) {
         fetchData(position.coords.latitude, position.coords.longitude);
@@ -41,8 +35,6 @@ const Forecast=()=>{
             })
         )
     })
-    console.log(element)
-    console.log("Updated Data")
     },[isUpdated])
     if(!data){
         return(
