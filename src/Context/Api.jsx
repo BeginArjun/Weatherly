@@ -1,9 +1,12 @@
 import { useContext, createContext, useState, useEffect } from "react";
+import { useCoords } from "./Coords";
 const ApiContext = createContext();
 export const Api = (props) => {
   const apiKey = "7d43ba9734370469b5589b2c43cc64c4";
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
+  const [location,setLocation]=useCoords()
+  console.log("Location: ",location)
+  const [lat, setLat] = useState(location.lat?location.lat:0);
+  const [long, setLong] = useState(location.long?location.long:0);
   const [data, setData] = useState(undefined);
   const [units, setUnits] = useState("metric");
   const [triggerUpdate, setTriggerUpdates] = useState(false);
@@ -18,12 +21,11 @@ export const Api = (props) => {
       setTriggerUpdates(data===undefined)
       console.log(apiData);
     };
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-      fetchData(position.coords.latitude, position.coords.longitude);
-    });
+    if(location.lat && location.long){
+      setLat(location.lat)
+      setLong(location.long)
+    }
+    fetchData(lat, long);
   }, [triggerUpdate]);
 
   return (
