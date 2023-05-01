@@ -8,7 +8,9 @@ const Unit=()=>{
     const [show,setShow]=useState(false);
     const [unit,setUnit]=useState('℃');
     const [countryCode,setCountryCode]=useState("_ _");
-    
+    useEffect(()=>{
+        setCountryCode(data.sys.country)
+    },[data])
     const handleSubmit=(e)=>{
         e.preventDefault();
         setUnit(e.target.innerText);
