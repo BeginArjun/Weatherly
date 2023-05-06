@@ -2,7 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { useCoords } from "./Coords";
 const ApiContext = createContext();
 export const Api = (props) => {
-  const apiKey = "7d43ba9734370469b5589b2c43cc64c4";
+  const apiKey = process.env.REACT_APP_API_KEY
   const [location,setLocation]=useCoords()
   console.log("Location: ",location)
   const [data, setData] = useState(undefined);

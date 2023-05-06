@@ -1,0 +1,13 @@
+header{
+    background: linear-gradient(90deg, #0000F9 0%, #0FADCD 51.04%, #0000F9 100%);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem;
+    height: 10vh;
+}
+ul{
+    list-style:none;
+}

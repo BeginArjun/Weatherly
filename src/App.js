@@ -1,5 +1,4 @@
-import Header from "./components/Header";
-import Layout from "./Pages/Layout/Layout";
+import Header from "./components/Header/Header";
 import { Api } from "./Context/Api";
 import { Coords } from "./Context/Coords";
 const App=()=>{
@@ -7,7 +6,6 @@ const App=()=>{
     <Coords>
      <Api>
       <Header/>
-      <Layout/>
      </Api>
      </Coords>
   )

@@ -1,8 +1,0 @@
-.shadow-hard{
-    box-shadow: 2px 4px 4px #000000;
-}
-.font-stroke{
-    text-shadow: 2px 2px 2px #000,
-				  -2px 2px 2px #000,
-				 2px -2px 2px #000;
-}

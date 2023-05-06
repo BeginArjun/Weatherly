@@ -1,8 +1,0 @@
-.font-stroke{
-    text-shadow: 2px 2px 2px #000,
-				  -2px 2px 2px #000,
-				 2px -2px 2px #000;
-}
-.header{
-    background: linear-gradient(90deg, #0000F9 0%, #0FADCD 51.04%, #0000F9 100%);
-}
