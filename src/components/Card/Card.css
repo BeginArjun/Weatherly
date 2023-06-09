@@ -1,0 +1,24 @@
+#card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    color: white;
+    
+}
+.date{
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    line-height: 70px;
+}
+#curr-details,#curr-img{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    height: 100%;
+    font-family: Karla, sans-serif;
+}
+.temp{
+    font-family:'Press Start 2P', cursive;
+    font-size: 40px;
+}

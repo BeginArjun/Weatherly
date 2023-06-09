@@ -1,16 +1,15 @@
 import './Header.css'
-import Logo from '../Logo/Logo'
 import Search from '../Search/Search'
+import Tabs from '../Tabs/Tabs'
 const Header=()=>{
     return (
         
         <header>
-            <nav>
-                <Logo/>
-                <ul>
-                    <li><Search/></li>
-                </ul>
-            </nav>
+                <div>
+                <p id="header-logo">Weatherly</p>
+                <Search/>
+                </div>
+                <Tabs/>
         </header>
     )
 }

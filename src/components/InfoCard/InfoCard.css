@@ -1,0 +1,12 @@
+.label{
+    color: #878484;
+}
+.info-card{
+    display:grid;
+    width:50%;
+    grid-template-columns: 1fr 1fr;
+    place-items: left;
+    place-content: center;
+    gap:2%;
+    padding: 10px;
+}

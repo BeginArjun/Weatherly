@@ -17,7 +17,7 @@ export const Api = (props) => {
       setData(apiData);
       console.log(apiData);
     };
-    fetchData(location.lat, location.long);
+    fetchData();
   }, [location]);
 
   return (

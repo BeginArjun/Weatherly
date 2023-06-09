@@ -1,0 +1,18 @@
+.wind-curr{
+    font-size:30px;
+    color:#2885CC;
+    font-weight:bold;
+}
+.curr-wind-contain{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap:2rem;
+}
+.wind-deg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
