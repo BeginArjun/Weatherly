@@ -1,4 +1,4 @@
-# Weather App
+# Weatherly
 ![image](https://github.com/BeginArjun/Weather-App/assets/92989288/ba936fe1-ca73-4e2d-9f55-c086b3c18d91)
 
 
